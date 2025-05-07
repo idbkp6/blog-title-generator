@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog Title Generator</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; }
+    input, button { padding: 10px; font-size: 16px; margin: 10px; }
+    #result { font-size: 24px; color: green; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Free Blog Title Generator</h1>
+  <p>Enter your niche or topic:</p>
+  <input type="text" id="topicInput" placeholder="e.g. AI Tools, Yoga, Passive Income">
+  <br>
+  <button onclick="generateTitle()">Generate Title</button>
+  <div id="result"></div>
+
+  <script>
+    const templates = [
+      "Top 10 {topic} Hacks You Must Know",
+      "How to Succeed in {topic} in 2024",
+      "{topic}: A Complete Beginner’s Guide",
+      "Secrets to Mastering {topic} Quickly",
+      "Why Everyone is Talking About {topic} Today",
+      "The Ultimate Guide to {topic} That Actually Works",
+      "Avoid These {topic} Mistakes at All Costs"
+    ];
+
+    function generateTitle() {
+      const topic = document.getElementById('topicInput').value;
+      if (!topic) {
+        alert("Please enter a topic!");
+        return;
+      }
+      const randomIndex = Math.floor(Math.random() * templates.length);
+      const title = templates[randomIndex].replace("{topic}", topic);
+      document.getElementById('result').textContent = title;
+    }
+  </script>
+</body>
+</html>
